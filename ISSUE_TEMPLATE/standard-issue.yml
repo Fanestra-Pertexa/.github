@@ -1,0 +1,99 @@
+name: Standard Issue
+description: Create a new detailed issue for backend/microservice or client work
+title: "[<Epic/Sprint>] <Short descriptive title>"
+labels: ["needs-triage"]
+assignees: []
+
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of Work
+      options:
+        - Feature
+        - Bug
+        - Technical Debt
+        - Refactor
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: epic
+    attributes:
+      label: Epic
+      description: Link to the Epic issue this belongs to (if applicable)
+      placeholder: "#123 Epic: CheckoutFlow"
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Background
+      description: Why is this issue needed? What problem does it solve? Include links to design docs, Figma, ERDs, API specs, or Slack threads.
+      placeholder: |
+        - Background of the feature or bug
+        - Where this sits in the overall architecture
+        - Relevant discussions/decisions (link ADRs)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What exactly needs to be built/fixed? Provide step-by-step details.
+      placeholder: |
+        - What is in scope?
+        - What is out of scope?
+        - Which microservice(s) or client(s) are touched?
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria / Definition of Done
+      description: Concrete conditions that must be met for this issue to be closed.
+      placeholder: |
+        - API endpoint accepts correct payload and returns 200
+        - Data is persisted in Postgres and mirrored to Aidbox
+        - Swagger docs updated
+        - Unit and integration tests passing
+        - Logs and metrics visible in dashboard
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies / Impact
+      description: List related services, upstreams, downstreams, or blockers.
+      placeholder: |
+        - Depends on Notifications MS being deployed
+        - Requires Patient DB schema migration
+        - Breaks backward compatibility? (Y/N)
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing & Validation
+      description: How will this be tested and validated?
+      placeholder: |
+        - Unit tests
+        - Integration tests
+        - Manual QA steps
+        - Load/performance tests
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / Open Questions
+      description: Identify possible risks, edge cases, or unanswered questions.
+      placeholder: |
+        - What happens if Oracle DB connection fails mid-run?
+        - How do we handle duplicate Patient records?
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes / Resources
+      description: Links or notes for devs, QA, or PMs.
+      placeholder: |
+        - API contracts
+        - ADRs
+        - Monitoring dashboards
